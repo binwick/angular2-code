@@ -102,15 +102,17 @@ export class SearchBox implements OnInit {
 
   constructor(private youtube: YouTubeService,
               private el: ElementRef) {
+    console.log(this.el); // 此组件所附着的元素
+    console.log(this.el.nativeElement); // 此组件DOM元素
   }
 
   ngOnInit(): void {
     // convert the `keyup` event into an observable stream
     Observable.fromEvent(this.el.nativeElement, 'keyup')
-      .map((e: any) => e.target.value) // extract the value of the input
+      .map((e: any) => e.target.value) // extract the value of the input. e is the event, e.target is input.
       .filter((text: string) => text.length > 1) // filter out if empty
       .debounceTime(250)                         // only once every 250ms
-      .do(() => this.loading.next(true))         // enable loading
+      .do(() => this.loading.next(true))         // enable loading， this.loading 发出一个true事件
       // search, discarding old events if new input comes in
       .map((query: string) => this.youtube.search(query))
       .switch()

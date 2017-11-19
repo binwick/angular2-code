@@ -53,7 +53,10 @@ export class MoreHTTPRequests {
 
   makeHeaders(): void {
     let headers: Headers = new Headers();
+    // 添加请求头
     headers.append('X-API-TOKEN', 'ng-book');
+    // 删除请求头
+    // headers.delete('X-API-TOKEN');
 
     let opts: RequestOptions = new RequestOptions();
     opts.headers = headers;
