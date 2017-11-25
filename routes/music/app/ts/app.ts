@@ -22,15 +22,15 @@ import {
 /*
  * Components
  */
-import {SearchComponent} from 'components/SearchComponent';
-import {ArtistComponent} from 'components/ArtistComponent';
-import {TrackComponent} from 'components/TrackComponent';
-import {AlbumComponent} from 'components/AlbumComponent';
+import {SearchComponent} from './components/SearchComponent';
+import {ArtistComponent} from './components/ArtistComponent';
+import {TrackComponent} from './components/TrackComponent';
+import {AlbumComponent} from './components/AlbumComponent';
 
 /*
  * Services
  */
-import {SPOTIFY_PROVIDERS} from 'services/SpotifyService';
+import {SPOTIFY_PROVIDERS} from './services/SpotifyService';
 
 /*
  * Webpack
