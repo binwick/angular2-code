@@ -18,12 +18,12 @@ import {
 /*
  * Components
  */
-import {HomeComponent} from 'components/HomeComponent';
+import {HomeComponent} from './components/HomeComponent';
 import {
   routes as childRoutes,
   ProductsComponent,
   ProductsComponentModule
-} from 'components/ProductsComponent';
+} from './components/ProductsComponent';
 
 /*
  * Webpack

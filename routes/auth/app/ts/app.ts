@@ -11,22 +11,22 @@ import {
   Routes
 } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 /*
  * Components
  */
-import {LoginComponent} from 'components/LoginComponent';
-import {HomeComponent} from 'components/HomeComponent';
-import {AboutComponent} from 'components/AboutComponent';
-import {ContactComponent} from 'components/ContactComponent';
-import {ProtectedComponent} from 'components/ProtectedComponent';
+import { LoginComponent } from './components/LoginComponent';
+import { HomeComponent } from './components/HomeComponent';
+import { AboutComponent } from './components/AboutComponent';
+import { ContactComponent } from './components/ContactComponent';
+import { ProtectedComponent } from './components/ProtectedComponent';
 
 /*
  * Services
  */
-import {AUTH_PROVIDERS} from 'services/AuthService';
-import {LoggedInGuard} from 'guards/loggedIn.guard';
+import { AUTH_PROVIDERS } from './services/AuthService';
+import { LoggedInGuard } from './guards/loggedIn.guard';
 
 /*
  * Webpack
@@ -36,28 +36,28 @@ require('css/styles.css');
 @Component({
   selector: 'router-app',
   template: `
-  <div class="page-header">
-    <div class="container">
-      <h1>Router Sample</h1>
-      <div class="navLinks">
-        <a [routerLink]="['/home']">Home</a>
-        <a [routerLink]="['/about']">About</a>
-        <a [routerLink]="['/contact']">Contact Us</a>
-        <a [routerLink]="['/protected']">Protected</a>
+    <div class="page-header">
+      <div class="container">
+        <h1>Router Sample</h1>
+        <div class="navLinks">
+          <a [routerLink]="['/home']">Home</a>
+          <a [routerLink]="['/about']">About</a>
+          <a [routerLink]="['/contact']">Contact Us</a>
+          <a [routerLink]="['/protected']">Protected</a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div id="content">
-    <div class="container">
+    <div id="content">
+      <div class="container">
 
-      <login></login>
+        <login></login>
 
-      <hr>
+        <hr>
 
-      <router-outlet></router-outlet>
+        <router-outlet></router-outlet>
+      </div>
     </div>
-  </div>
   `
 })
 class RoutesDemoApp {
@@ -66,12 +66,11 @@ class RoutesDemoApp {
 }
 
 const routes: Routes = [
-  { path: '',          redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home',      component: HomeComponent },
-  { path: 'about',     component: AboutComponent },
-  { path: 'contact',   component: ContactComponent },
-  { path: 'protected', component: ProtectedComponent,
-    canActivate: [LoggedInGuard]}
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: 'home', component: HomeComponent},
+  {path: 'about', component: AboutComponent},
+  {path: 'contact', component: ContactComponent},
+  {path: 'protected', component: ProtectedComponent, canActivate: [LoggedInGuard]}// 登录之后才能看到
 ];
 
 @NgModule({
@@ -88,14 +87,15 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes) // <-- routes
   ],
-  bootstrap: [ RoutesDemoApp ],
+  bootstrap: [RoutesDemoApp],
   providers: [
     AUTH_PROVIDERS,
     LoggedInGuard,
-    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
   ]
 })
-class RoutesDemoAppModule {}
+class RoutesDemoAppModule {
+}
 
 platformBrowserDynamic().bootstrapModule(RoutesDemoAppModule)
   .catch((err: any) => console.error(err));

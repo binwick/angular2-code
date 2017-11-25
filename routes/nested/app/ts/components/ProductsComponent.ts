@@ -15,10 +15,10 @@ import {
 /*
  * Components
  */
-import {MainComponent} from 'components/products/MainComponent';
-import {InterestComponent} from 'components/products/InterestComponent';
-import {SportifyComponent} from 'components/products/SportifyComponent';
-import {ByIdComponent} from 'components/products/ByIdComponent';
+import {MainComponent} from './products/MainComponent';
+import {InterestComponent} from './products/InterestComponent';
+import {SportifyComponent} from './products/SportifyComponent';
+import {ByIdComponent} from './products/ByIdComponent';
 
 @Component({
   selector: 'products',
