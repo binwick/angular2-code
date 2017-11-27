@@ -5,9 +5,9 @@ import {
   Component,
   ReflectiveInjector,
 } from '@angular/core';
-import { NgModule } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
-import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
+import {NgModule} from "@angular/core";
+import {BrowserModule} from "@angular/platform-browser";
+import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
 
 /*
  * Webpack
@@ -26,14 +26,14 @@ class MyService {
 @Component({
   selector: 'di-sample-app',
   template: `
-  <button (click)="invokeService()">Get Value</button>
+      <button (click)="invokeService()">Get Value</button>
   `
 })
 class DiSampleApp {
   myService: MyService;
 
   constructor() {
-    let injector: any = ReflectiveInjector.resolveAndCreate([MyService]);
+    let injector: any = ReflectiveInjector.resolveAndCreate([ MyService ]);// 创建一个新的注入器
     this.myService = injector.get(MyService);
     console.log('Same instance?', this.myService === injector.get(MyService));
   }
@@ -49,7 +49,8 @@ class DiSampleApp {
   imports: [ BrowserModule ],
   bootstrap: [ DiSampleApp ]
 })
-class DiSampleAppModule {}
+class DiSampleAppModule {
+}
 
 platformBrowserDynamic().bootstrapModule(DiSampleAppModule);
 

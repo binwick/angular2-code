@@ -36,12 +36,13 @@ class ParamService {
 @Component({
   selector: 'di-sample-app',
   template: `
-  <button (click)="invokeService()">Get Value</button>
+      <button (click)="invokeService()">Get Value</button>
   `
 })
 class DiSampleApp {
   constructor(private simpleService: SimpleService,
-              private paramService: ParamService) {}
+              private paramService: ParamService) {
+  }
 
   invokeService(): void {
     console.log('SimpleService returned', this.simpleService.getValue());
@@ -54,14 +55,15 @@ class DiSampleApp {
   imports: [ BrowserModule ],
   bootstrap: [ DiSampleApp ],
   providers: [
-    SimpleService,
+    SimpleService,// 声明注入
     {
       provide: ParamService,
       useFactory: (): ParamService => new ParamService('YOLO')
     }
   ]
 })
-class DiSampleAppAppModule {}
+class DiSampleAppAppModule {
+}
 
 platformBrowserDynamic().bootstrapModule(DiSampleAppAppModule)
   .catch((err: any) => console.error(err));

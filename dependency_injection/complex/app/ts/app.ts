@@ -13,8 +13,8 @@ import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 /*
  * Services
  */
-import {ApiService} from 'services/ApiService';
-import {ViewPortService} from 'services/ViewPortService';
+import { ApiService } from './services/ApiService';
+import { ViewPortService } from './services/ViewPortService';
 
 /*
  * Webpack
@@ -24,8 +24,8 @@ require('css/styles.css');
 @Component({
   selector: 'di-sample-app',
   template: `
-  <button (click)="invokeApi()">Invoke API</button>
-  <button (click)="useInjectors()">Use Injectors</button>
+      <button (click)="invokeApi()">Invoke API</button>
+      <button (click)="useInjectors()">Use Injectors</button>
   `
 })
 class DiSampleApp {
@@ -40,6 +40,9 @@ class DiSampleApp {
     this.sizeService.run();
   }
 
+  /**
+   * 不用刷新页面也能重新注入
+   */
   useInjectors(): void {
     let injector: any = ReflectiveInjector.resolveAndCreate([
       ViewPortService,
@@ -48,7 +51,7 @@ class DiSampleApp {
         useFactory: (viewport: any) => {
           return viewport.determineService();
         },
-        deps: [ViewPortService]
+        deps: [ ViewPortService ]
       }
     ]);
     let sizeService: any = injector.get('OtherSizeService');
@@ -69,11 +72,12 @@ class DiSampleApp {
       useFactory: (viewport: any) => {
         return viewport.determineService();
       },
-      deps: [ViewPortService]
+      deps: [ ViewPortService ]
     }
   ]
 })
-class DiSampleAppAppModule {}
+class DiSampleAppAppModule {
+}
 
 platformBrowserDynamic().bootstrapModule(DiSampleAppAppModule)
   .catch((err: any) => console.error(err));

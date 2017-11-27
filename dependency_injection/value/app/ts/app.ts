@@ -11,7 +11,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 /*
  * Services
  */
-import {ApiService, API_URL} from 'services/ApiService';
+import {ApiService, API_URL} from './services/ApiService';
 
 /*
  * Webpack
