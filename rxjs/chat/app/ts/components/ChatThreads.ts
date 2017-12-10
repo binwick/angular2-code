@@ -32,16 +32,16 @@ export class ChatThread implements OnInit {
 
   constructor(private threadsService: ThreadsService) {
   }
-
+  // 使用on init 是因为 constructor 中获取不到 thread, thread 是输入属性
   ngOnInit(): void {
     this.threadsService.currentThread
       .subscribe( (currentThread: Thread) => {
-        this.selected = currentThread &&
-          this.thread &&
-          (currentThread.id === this.thread.id);
+        this.selected = currentThread
+          && this.thread
+          && (currentThread.id === this.thread.id);
       });
   }
-
+  // 点击事件，修改当前thread
   clicked(event: any): void {
     this.threadsService.setCurrentThread(this.thread);
     event.preventDefault();
