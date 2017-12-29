@@ -92,7 +92,7 @@ export class ChatMessage implements OnInit {
                        class="chat-input"
                        placeholder="Write your message here..."
                        (keydown.enter)="onEnter($event)"
-                       [(ngModel)]="draftMessage.text" />
+                       [(ngModel)]="draftMessage.text" /> <!--双向绑定 [()]-->
                 <span class="input-group-btn">
                   <button class="btn-chat"
                      (click)="onEnter($event)"
