@@ -52,3 +52,6 @@ console.log(store.getState()); // -> 2
 
 store.dispatch({ type: 'DECREMENT' });
 console.log(store.getState()); // -> 1
+
+store.dispatch({ type: 'PLUS', payload: 10 });
+console.log(store.getState()); // -> 1
