@@ -62,13 +62,14 @@ let store = new Store<number>(reducer, 0);
 console.log(store.getState()); // -> 0
 
 // subscribe
+// 添加subscribe 返回的值是unsubscribe
 let unsubscribe = store.subscribe(() => {
   console.log('subscribed: ', store.getState());
 });
 
 store.dispatch({ type: 'INCREMENT' }); // -> subscribed: 1
 store.dispatch({ type: 'INCREMENT' }); // -> subscribed: 2
-
+// 调用unsubscribe
 unsubscribe();
 store.dispatch({ type: 'DECREMENT' }); // (nothing logged)
 
