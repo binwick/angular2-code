@@ -60,7 +60,7 @@
     "karma-webpack": "1.7.0",
     "live-server": "0.7.1",
     "on-build-webpack": "0.1.0",
-    "phantomjs": "1.9.18",
+    "phantomjs": "2.1.1",
     "phantomjs-polyfill": "0.0.1",
     "protractor": "4.0.14",
     "raw-loader": "0.5.1",
